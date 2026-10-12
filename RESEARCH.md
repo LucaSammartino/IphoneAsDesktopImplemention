@@ -74,7 +74,7 @@ Project READMEs read on 2026-10-12; not yet tested by us.
 - Fallback: Route B (cloud PC).
 
 ## Open questions
-- Test phone: iPhone19,3 (18 Pro Max) on iOS 27.0, paired with the Mac over USB-C (checked 2026-10-12). Open: does StikDebug JIT work on iOS 27.0 for Madeira and UTM?
+- Test phone: iPhone19,3 (18 Pro Max) on iOS 27.0, paired with the Mac over USB-C (checked 2026-10-12). Developer Mode ENABLED and developer disk image services available (devicectl, 2026-10-12). Open: does StikDebug JIT work on iOS 27.0 for Madeira and UTM?
 - Real Windows 11 ARM speed on an 18 Pro Max.
 - Whether iPhone Mirroring on the Mac can drive UTM input.
 - Multi-monitor: unsolved on iPhone; workaround is one ultrawide plus window zones.
