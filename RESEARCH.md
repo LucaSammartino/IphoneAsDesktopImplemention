@@ -48,6 +48,15 @@ Use an iPhone 18 Pro Max as a desktop: Windows or macOS, full mouse and keyboard
 - OpenDisplay is the reverse direction (iPhone as Mac second screen). https://github.com/peetzweg/opendisplay
 - Phone demo: iPhone 15 Pro on Studio Display with infiniteX2P demo app, laggy. https://www.phonearena.com/news/With-some-tinkering-and-a-monitor-iPhone-15-Pro-can-be-used-as-a-PC_id150925
 
+## Route D: Wine on iOS (found via r/EmulationOniOS, 2026-10-12)
+Project READMEs read on 2026-10-12; not yet tested by us.
+- **Madeira** (https://github.com/willfaust/madeira, GPL-3.0, ~2.2k stars, active): runs x86-64 Windows PC games on jailed iOS (no jailbreak). Stack: FEX-Emu (x86 to ARM64 translation) + Wine 11.4 built for ARM64EC (Wine itself runs natively, only the app's code is translated) + DXMT (D3D9/10/11 to Metal) + own D3D12-on-Metal layer. Single iOS process. Has a Windows desktop session, Steam login/install, Steam Cloud, keyboard/mouse/trackpad passthrough as real input, Bluetooth controllers. Requires iOS 26+ (dev on recent Pro iPhones), JIT via StikDebug or built-in StikJIT; on iOS 27 the built-in helper can pair the iPhone itself with no computer. Free Apple ID works (7-day signing). Not on the App Store because it needs JIT.
+- **Iridium** (https://github.com/intraducine/iridium, AGPL-3.0, ~77 stars): experimental Windows-game runtime for iPhone/iPad built on the Madeira runtime plus its own forks of FEX/Wine; native game library, touch/keyboard/mouse/controller. Steam path only partly validated; builds not yet device-validated (per its README). Unsigned IPA build script included.
+- **Husk** (https://github.com/Leviidev/Husk, ~1.5k stars): runs Android apps on iPhone. Translation layer (native arm64 Android code with Android libs stubbed; fast) or full LineageOS under QEMU (slow, no hypervisor on iOS). Possible Android-desktop angle; not researched further.
+- **Manic EMU** (https://github.com/Manic-EMU/ManicEMU, AGPL-3.0): retro game emulator; relevant only as an example app distributed via StikStore/SideStore with AirPlay output.
+- Implication: Wine on ARM64 (Route D) avoids booting a full emulated Windows 11, so it may be far faster than UTM for running individual Windows apps, but it gives Windows apps, not a full Windows OS, and is aimed at games. Compatibility with productivity apps unknown. Multi-monitor still unsolved.
+- Discord: Madeira has a community server linked from its README.
+
 ## Hardware
 - Owned: UGREEN 70336 = 4-port USB-A USB-C hub, NO video output, no PD pass-through. Good only for keyboard/mouse/storage.
 - Need for display test: a hub or adapter with HDMI 2.0 4K 60Hz, USB-C PD pass-through, 2+ USB-A, single cable to the phone. Check iPhone compatibility and return policy; none of the sources tested these with an iPhone.
@@ -57,7 +66,8 @@ Use an iPhone 18 Pro Max as a desktop: Windows or macOS, full mouse and keyboard
 - Without a monitor: HDMI capture dongle into the Mac.
 
 ## Plan
-- Phase 1 (Mac + phone, no monitor): sideload UTM, enable JIT via StikDebug, install Windows 11 ARM, measure speed. View via QuickTime or iPhone Mirroring. This tests the biggest unknown.
+- Phase 1a: try Madeira (Route D) first: sideload, JIT, open its Windows desktop session, test a Windows app and keyboard/mouse. Compare with Phase 1b.
+- Phase 1b (Mac + phone, no monitor): sideload UTM, enable JIT via StikDebug, install Windows 11 ARM, measure speed. View via QuickTime or iPhone Mirroring. This tests the biggest unknown.
 - Phase 2: dock/adapter + monitor: verify external display path, keyboard, mouse.
 - Fallback: Route B (cloud PC).
 
