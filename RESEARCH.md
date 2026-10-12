@@ -56,6 +56,7 @@ Project READMEs read on 2026-10-12; not yet tested by us.
 - **Manic EMU** (https://github.com/Manic-EMU/ManicEMU, AGPL-3.0): retro game emulator; relevant only as an example app distributed via StikStore/SideStore with AirPlay output.
 - Implication: Wine on ARM64 (Route D) avoids booting a full emulated Windows 11, so it may be far faster than UTM for running individual Windows apps, but it gives Windows apps, not a full Windows OS, and is aimed at games. Compatibility with productivity apps unknown. Multi-monitor still unsolved.
 - **MeloNX** (https://starforgejo.dev/projects/MeloNX, GPL-3.0, Nintendo Switch emulator based on Ryujinx; last commit 2026-10-11; CI on canary failing at that time): not a desktop route, but a good reference for the JIT tooling on iOS 26+. Requires JIT (StikDebug recommended on iOS 26), "Increased Memory Limit" entitlement on all devices, "Extended Virtual Addressing" on low-RAM devices. Recommended sideload tool: PlumeImpactor, optionally with SideStore for on-device refresh. No external display or mouse mentioned.
+- **DukeX** (https://github.com/MaftyManicEMU/DukeX, original Xbox emulator built on xemu, ~135 stars, last push 2026-10-05): not a desktop route. Reference for JIT and display: TCG with version-aware JIT, iOS 26+ uses StikDebug with the "Universal.js" script assigned to the app's bundle ID, optional automatic StikDebug handoff, MoltenVK + native Metal presenter, AirPlay and external-display handling. Distributed via StikStore/SideStore source JSON. Requires A14/M1 or newer.
 - Discord: Madeira has a community server linked from its README.
 
 ## Hardware
@@ -79,3 +80,7 @@ Project READMEs read on 2026-10-12; not yet tested by us.
 - Multi-monitor: unsolved on iPhone; workaround is one ultrawide plus window zones.
 - Parsec/Moonlight behavior on iPhone external display.
 - Reddit threads not found by search; try searching r/UTMapp, r/EmulationOniOS, r/iosjailbreak directly.
+
+## Tooling notes
+- The Xcode iOS Simulator cannot test JIT, USB-C display output or sideloading; it is only useful for building/inspecting apps. Real-device tests need the physical phone.
+- `xcrun devicectl` and libimobiledevice (`ideviceinfo`) both work with the phone over USB-C from the Mac.
