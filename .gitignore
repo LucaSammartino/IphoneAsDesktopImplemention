@@ -1,0 +1,3 @@
+# Personal device data, never commit
+private/
+*.private.*
