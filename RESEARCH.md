@@ -55,6 +55,7 @@ Project READMEs read on 2026-10-12; not yet tested by us.
 - **Husk** (https://github.com/Leviidev/Husk, ~1.5k stars): runs Android apps on iPhone. Translation layer (native arm64 Android code with Android libs stubbed; fast) or full LineageOS under QEMU (slow, no hypervisor on iOS). Possible Android-desktop angle; not researched further.
 - **Manic EMU** (https://github.com/Manic-EMU/ManicEMU, AGPL-3.0): retro game emulator; relevant only as an example app distributed via StikStore/SideStore with AirPlay output.
 - Implication: Wine on ARM64 (Route D) avoids booting a full emulated Windows 11, so it may be far faster than UTM for running individual Windows apps, but it gives Windows apps, not a full Windows OS, and is aimed at games. Compatibility with productivity apps unknown. Multi-monitor still unsolved.
+- **MeloNX** (https://starforgejo.dev/projects/MeloNX, GPL-3.0, Nintendo Switch emulator based on Ryujinx; last commit 2026-10-11; CI on canary failing at that time): not a desktop route, but a good reference for the JIT tooling on iOS 26+. Requires JIT (StikDebug recommended on iOS 26), "Increased Memory Limit" entitlement on all devices, "Extended Virtual Addressing" on low-RAM devices. Recommended sideload tool: PlumeImpactor, optionally with SideStore for on-device refresh. No external display or mouse mentioned.
 - Discord: Madeira has a community server linked from its README.
 
 ## Hardware
